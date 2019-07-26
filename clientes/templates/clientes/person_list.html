@@ -3,5 +3,8 @@ Listagem de Pessoas
 
 <br>
 {% for person in object_list %}
-    {{ person }}
+    <a href="{% url 'person_list_cbv' person.pk%}">{{ person }}</a> <br>
 {% endfor %}
+
+
+
