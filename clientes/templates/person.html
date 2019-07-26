@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load my_tags %}
 
 {% block title %} Administracao {% endblock %}
 
@@ -21,6 +21,8 @@
                         </a>
                     </li>
 
+                {% empty %}
+                    <li>Sorry, no clients in this list.</li>
                 {% endfor %}
             </ul>
 
@@ -42,6 +44,17 @@
         </div>
     </div>
 
+{% filter force_escape|upper %}
+    This text will be HTML-escaped, and will appear in all uppercase.
+{% endfilter %}
+
+{% if persons|length >= 2 %}
+    More then 2 clients.
+{% endif %}
+
+<h3> The current datetime </h3>
+{% current_time "%Y-%m-%d %I:%M %p" as the_time %}
+{{ the_time }}
 
 {% endblock %}
 
