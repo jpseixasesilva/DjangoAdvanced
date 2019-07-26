@@ -1,6 +1,6 @@
 from django.urls import path
 from .views import persons_list, PersonList, PersonDetail, PersonCreate, PersonUpdate, PersonDelete
-from .views import persons_new
+from .views import persons_new, BulkProduct
 from .views import persons_update
 from .views import persons_delete
 
@@ -15,5 +15,6 @@ urlpatterns = [
     path('person_create/', PersonCreate.as_view(), name="person_create_cbv"),
     path('person_update/<int:pk>/', PersonUpdate.as_view(), name="person_update_cbv"),
     path('person_delete/<int:pk>/', PersonDelete.as_view(), name="person_delete_cbv"),
+    path('person_bulk/', BulkProduct.as_view(), name="person_bulk"),
 
 ]
