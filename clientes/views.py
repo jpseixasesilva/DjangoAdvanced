@@ -76,4 +76,7 @@ class PersonUpdate(UpdateView):
 
 class PersonDelete(DeleteView):
     model = Person
-    success_url = reverse_lazy('person_list_cbv')
+    #success_url = reverse_lazy('person_list_cbv')
+
+    def get_success_url(self):
+        success_url = reverse_lazy('person_list_cbv')
