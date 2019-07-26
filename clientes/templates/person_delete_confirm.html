@@ -12,7 +12,13 @@
         <button type="submit" class="btn btn-danger">Delete</button>
     </form>
 
-
-
 {% endblock %}
+
+
+{% block footer %}
+        {% include 'footer.html' with v1=footer_message %}
+{% endblock %}
+
+
+
 
