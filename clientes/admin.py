@@ -27,7 +27,7 @@ class PersonAdmin(admin.ModelAdmin):
 
 
 class VendaAdmin(admin.ModelAdmin):
-    readonly_fields = ('desconto',)
+    readonly_fields = ('valor',)
     raw_id_fields = ("pessoa", 'produtos')
     list_filter = ('pessoa__doc', 'desconto')
     list_display = ('id', 'pessoa', 'total')

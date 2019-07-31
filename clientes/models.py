@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models.signals import m2m_changed
+from django.dispatch import receiver
 
 
 class Documento(models.Model):
@@ -54,3 +56,10 @@ class ItensDoPedido(models.Model):
 
     def __str__(self):
         return self.venda.numero + ' - ' + self.produto.description
+
+
+@receiver(m2m_changed, sender=Venda.produtos.through)
+def update_vendas_total(sender, instance, **kwargs):
+    total = instance.get_total()
+    instance.save()
+    #Venda.objects.filter(id=instance.id).update(total=total)
