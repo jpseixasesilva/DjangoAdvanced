@@ -3,7 +3,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 from django.views.generic.edit import CreateView, DeleteView
-from .models import Person, Produto
+from .models import Person
+from produtos.models import Produto
+from vendas.models import Venda
 from .forms import PersonForm
 from django.views.generic.list import View
 from django.views.generic.list import ListView

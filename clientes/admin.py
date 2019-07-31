@@ -1,6 +1,7 @@
 from django.contrib import admin
-from  .actions import nfe_emitida, nfe_nao_emitida
-from .models import Person, Documento, Venda, Produto
+
+from .models import Person, Documento
+
 
 class PersonAdmin(admin.ModelAdmin):
     fieldsets = (
@@ -25,24 +26,12 @@ class PersonAdmin(admin.ModelAdmin):
     tem_foto.short_description = 'Possui foto'
 
 
-class VendaAdmin(admin.ModelAdmin):
-    readonly_fields = ('valor',)
-    raw_id_fields = ("pessoa", 'produtos')
-    list_filter = ('pessoa__doc', 'desconto')
-    list_display = ('id', 'pessoa', 'total', 'nfe_emitida')
-    search_fields = ('id', 'pessoa__first_name', 'pessoa__doc__num_doc')
-    actions = [nfe_emitida, nfe_nao_emitida]
 
-    def total(self, obj):
-        return obj.get_total()
 
-    total.short_description = 'Total'
-
-class ProdutoAdmin(admin.ModelAdmin):
-    list_filter = ('id','descricao','preco')
+#class ProdutoAdmin(admin.ModelAdmin):
+#    list_filter = ('id','descricao','preco')
 
 
 admin.site.register(Person, PersonAdmin)
 admin.site.register(Documento)
-admin.site.register(Venda, VendaAdmin)
-admin.site.register(Produto, ProdutoAdmin)
+#admin.site.register(Produto, ProdutoAdmin)
