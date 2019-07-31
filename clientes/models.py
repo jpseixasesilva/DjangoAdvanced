@@ -35,10 +35,16 @@ class Venda(models.Model):
     desconto = models.DecimalField(max_digits=5, decimal_places=2)
     impostos = models.DecimalField(max_digits=5, decimal_places=2)
     pessoa = models.ForeignKey(Person, null=True, blank=True, on_delete=models.PROTECT)
-    # produtos = models.ManyToManyField(Produto, blank=True)
+    produtos = models.ManyToManyField(Produto, blank=True)
 
     def __str__(self):
         return self.numero
+
+    def get_total(self):
+        tot = 0
+        for produto in self.produtos.all():
+            tot += produto.preco
+        return (tot - self.desconto) - self.desconto
 
 class ItensDoPedido(models.Model):
     venda = models.ForeignKey(Venda, on_delete=models.CASCADE)
