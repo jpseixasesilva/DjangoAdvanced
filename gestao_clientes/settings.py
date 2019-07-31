@@ -29,6 +29,9 @@ DEBUG = config('DEBUG', default=False, cast=bool)
 
 ALLOWED_HOSTS = ['gestao-clientes2.herokuapp.com', 'localhost', '127.0.0.1']
 
+INTERNAL_IPS = ['127.0.0.1'],
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -41,9 +44,11 @@ INSTALLED_APPS = [
     'bootstrapform',
     'clientes',
     'home',
+    'debug_toolbar',
 ]
 
 MIDDLEWARE = [
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -51,6 +56,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
 ]
 
 ROOT_URLCONF = 'gestao_clientes.urls'
