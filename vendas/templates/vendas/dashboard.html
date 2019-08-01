@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block main %}
+    <h1>Dashboard</h1>
+
+    <ul>
+        <li>Ticket Médio {{ media }}</li>
+        <li>Pedído com menor valor {{ min }}</li>
+        <li>Pedído com maior valor {{ max }}</li>
+        <li>Desconto médio {{ media_desc }}</li>
+        <li>Número de pedidos {{ n_ped }}</li>
+
+
+
+    </ul>
+
+
+{% endblock %}
